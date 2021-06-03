@@ -1,0 +1,61 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = require("react");
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactDom = require("react-dom");
+  var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
+  var _Pet = require("./Pet");
+  var _PetDefault = _parcelHelpers.interopDefault(_Pet);
+  var _reactJsxRuntime = require("react/jsx-runtime");
+  const App = () => {
+    /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+      children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
+        children: "Adopt Me!"
+      }), /*#__PURE__*/_reactJsxRuntime.jsx(_PetDefault.default, {
+        name: "Ash",
+        animal: "Dog",
+        breed: "Australian Sheppard"
+      }), /*#__PURE__*/_reactJsxRuntime.jsx(_PetDefault.default, {
+        name: "Tom",
+        animal: "Dog",
+        breed: "Australian Sheppard"
+      }), /*#__PURE__*/_reactJsxRuntime.jsx(_PetDefault.default, {
+        name: "Ash",
+        animal: "Dog",
+        breed: "Australian Sheppard"
+      })]
+    });
+  };
+  _c = App;
+  // const App = () => {
+  // return React.createElement("div", {}, [
+  // React.createElement("h1", { id: "my-brand" }, "Adopt me!"),
+  // React.createElement(Pet, {
+  // name: "Ash",
+  // animal: "Dog",
+  // breed: "Wire Hair Pointer",
+  // }),
+  // React.createElement(Pet, {
+  // name: "Tom",
+  // animal: "Cat",
+  // breed: "American Short-Hair",
+  // }),
+  // React.createElement(Pet, {
+  // name: "SxreeDumps",
+  // animal: "Cat",
+  // breed: "Calico",
+  // }),
+  // ]);
+  // };
+  _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(App), document.getElementById("root"));
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

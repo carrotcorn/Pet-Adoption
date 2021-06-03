@@ -1,0 +1,23 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  const Pet = props => {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {}, [/*#__PURE__*/_reactDefault.default.createElement("h2", {}, props.name), /*#__PURE__*/_reactDefault.default.createElement("h3", {}, props.animal), /*#__PURE__*/_reactDefault.default.createElement("h3", {}, props.breed)])
+    );
+  };
+  _c = Pet;
+  exports.default = Pet;
+  var _c;
+  $RefreshReg$(_c, "Pet");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
