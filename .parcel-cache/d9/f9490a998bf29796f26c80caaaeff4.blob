@@ -1,0 +1,27 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _reactJsxRuntime = require("react/jsx-runtime");
+const SearchParams = () => {
+  const location = "Vancouver, BC";
+  return (
+    /*#__PURE__*/_reactJsxRuntime.jsx("div", {
+      className: "search-params",
+      children: /*#__PURE__*/_reactJsxRuntime.jsxs("form", {
+        children: [/*#__PURE__*/_reactJsxRuntime.jsxs("label", {
+          htmlFor: "location",
+          children: ["Location", /*#__PURE__*/_reactJsxRuntime.jsx("input", {
+            id: "location",
+            value: location,
+            placeholder: "location"
+          })]
+        }), /*#__PURE__*/_reactJsxRuntime.jsx("button", {
+          children: "Submit"
+        })]
+      })
+    })
+  );
+};
+_c = SearchParams;
+exports.default = SearchParams;
+var _c;
+$RefreshReg$(_c, "SearchParams");
