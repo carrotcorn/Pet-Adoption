@@ -1,0 +1,82 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  require("./Pet");
+  var _reactJsxRuntime = require("react/jsx-runtime");
+  var _s = $RefreshSig$();
+  const ANIMALS = ["cat", "dog", "snake", "fish", "rabbit"];
+  const SearchParams = () => {
+    _s();
+    const [location, setLocation] = _react.useState("Vancouver, BC");
+    const [animal, setAnimal] = _react.useState("");
+    const [breed, setBreed] = _react.useState("");
+    const [pets, setPets] = _react.useState([]);
+    const breeds = [];
+    _react.useEffect(() => {
+      requestPets();
+    });
+    async function requestPets() {
+      const res = await fetch(`https://pets-v2.dev-apis.com/pets?animal=${animal}`);
+    }
+    return (
+      /*#__PURE__*/_reactJsxRuntime.jsx("div", {
+        className: "search-params",
+        children: /*#__PURE__*/_reactJsxRuntime.jsxs("form", {
+          children: [/*#__PURE__*/_reactJsxRuntime.jsxs("label", {
+            htmlFor: "location",
+            children: ["Location", /*#__PURE__*/_reactJsxRuntime.jsx("input", {
+              id: "location",
+              onChange: e => setLocation(e.target.value),
+              value: location,
+              placeholder: "location"
+            })]
+          }), /*#__PURE__*/_reactJsxRuntime.jsxs("label", {
+            htmlFor: "animal",
+            children: ["Animal", /*#__PURE__*/_reactJsxRuntime.jsxs("select", {
+              id: "animal",
+              value: animal,
+              onChange: e => setAnimal(e.target.value),
+              onBlur: e => setAnimal(e.target.value),
+              children: [/*#__PURE__*/_reactJsxRuntime.jsx("option", {
+                value: ""
+              }), ANIMALS.map(animal => /*#__PURE__*/_reactJsxRuntime.jsx("option", {
+                value: animal,
+                children: animal
+              }, animal))]
+            })]
+          }), /*#__PURE__*/_reactJsxRuntime.jsxs("label", {
+            htmlFor: "breed",
+            children: ["Breeds", /*#__PURE__*/_reactJsxRuntime.jsxs("select", {
+              id: "breed",
+              value: breed,
+              onChange: e => setBreed(e.target.value),
+              onBlur: e => setBreed(e.target.value),
+              children: [/*#__PURE__*/_reactJsxRuntime.jsx("option", {
+                value: ""
+              }), breeds.map(breed => /*#__PURE__*/_reactJsxRuntime.jsx("option", {
+                value: breed,
+                children: breed
+              }, breed))]
+            })]
+          }), /*#__PURE__*/_reactJsxRuntime.jsx("button", {
+            children: "Submit"
+          })]
+        })
+      })
+    );
+  };
+  _s(SearchParams, "ysYeTHQRmAxZBKRMtCZaHFJ4Gwo=");
+  _c = SearchParams;
+  exports.default = SearchParams;
+  var _c;
+  $RefreshReg$(_c, "SearchParams");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

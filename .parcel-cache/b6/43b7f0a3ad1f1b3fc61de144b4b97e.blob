@@ -1,0 +1,41 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _s = $RefreshSig$();
+  const localCache = {};
+  function useBreedList(animal) {
+    _s();
+    const [breedList, setBreedList] = _react.useState([]);
+    const [status, setStatus] = _react.useState("unloaded");
+    _react.useEffect(() => {
+      if (!animal) {
+        setBreedList([]);
+      } else if (localCache[animal]) {
+        setBreedList(localCache[animal]);
+      } else {
+        requestBreedList();
+      }
+      async function requestBreedList() {
+        setBreedList([]);
+        setStatus("Loading");
+        const res = await fetch(`http://pets-v2.dev-apis.com/breeds?animal=${animal}`);
+        const json = await res.json();
+        localCache[animal] = json.breeds || [];
+        setBreedList(localCache[animal]);
+        setStatus("loaded");
+      }
+    }, [animal]);
+    return [breedList, status];
+  }
+  exports.default = useBreedList;
+  _s(useBreedList, "fwO6kCJGACy4buvWsnD+NOmO304=");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
