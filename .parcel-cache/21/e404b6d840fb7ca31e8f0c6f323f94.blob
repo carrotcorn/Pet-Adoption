@@ -1,0 +1,26 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _Pet = require('./Pet');
+var _PetDefault = _parcelHelpers.interopDefault(_Pet);
+var _reactJsxRuntime = require("react/jsx-runtime");
+const Results = props => {
+  return (
+    /*#__PURE__*/_reactJsxRuntime.jsx("div", {
+      className: "search",
+      children: !props.pets.length ? /*#__PURE__*/_reactJsxRuntime.jsx("h2", {
+        children: "No Pets Found"
+      }) : pets.map(pet => /*#__PURE__*/_reactJsxRuntime.jsx(_PetDefault.default, {
+        animal: pet.animal,
+        name: pet.name,
+        breed: pet.breed,
+        images: pet.images,
+        location: `${pet.city}, ${pet.state}`,
+        id: pet.id
+      }, pet.id))
+    })
+  );
+};
+_c = Results;
+exports.default = Results;
+var _c;
+$RefreshReg$(_c, "Results");
