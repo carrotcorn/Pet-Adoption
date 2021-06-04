@@ -1,0 +1,14 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _reactJsxRuntime = require("react/jsx-runtime");
+const Details = () => {
+  return (
+    /*#__PURE__*/_reactJsxRuntime.jsx("h2", {
+      children: "Hi"
+    })
+  );
+};
+_c = Details;
+exports.default = Details;
+var _c;
+$RefreshReg$(_c, "Details");
