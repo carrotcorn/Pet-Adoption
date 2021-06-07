@@ -1,0 +1,58 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactRouterDom = require('react-router-dom');
+  var _reactJsxRuntime = require("react/jsx-runtime");
+  class Details extends _react.Component {
+    constructor() {
+      super();
+      this.state = {
+        loading: true
+      };
+    }
+    async componentDidMount() {
+      const res = await fetch(`http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`);
+      const json = await res.json();
+      // this.setState(Object.assign(
+      // { loading: false }, json.pets[0]
+      // ));
+      this.setState({
+        loading: false,
+        name: json.pets[0],
+        breed: json.pets[0]
+      });
+    }
+    render() {
+      // console.log(this.state);
+      const {animal, breed, city, state, description, name} = this.state;
+      return (
+        /*#__PURE__*/_reactJsxRuntime.jsx("div", {
+          className: "details",
+          children: /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+            children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
+              children: name
+            }), /*#__PURE__*/_reactJsxRuntime.jsxs("h2", {
+              children: [animal, " - ", breed, " - ", city, ", ", state]
+            }), /*#__PURE__*/_reactJsxRuntime.jsxs("button", {
+              children: ["Adopt ", name]
+            }), /*#__PURE__*/_reactJsxRuntime.jsx("p", {
+              children: description
+            })]
+          })
+        })
+      );
+    }
+  }
+  exports.default = _c = _reactRouterDom.withRouter(Details);
+  var _c;
+  $RefreshReg$(_c, "%default%");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
