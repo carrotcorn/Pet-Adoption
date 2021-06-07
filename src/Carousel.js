@@ -9,7 +9,13 @@ class Carousel extends Component {
     images: ["https://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
-  handleIndexClick(e) {
+  //this notation of making the event handler an arrow function bypasses having to '.bind(this)'.
+  handleIndexClick = (e) => {
+    this.setState({
+      active: +e.target.dataset.index,
+    });
+  };
+  /* handleIndexClick(e) {
     this.setState({
       active: 0 + e.target.dataset.index,
       //above comes back as string, needs to be a number
@@ -17,7 +23,7 @@ class Carousel extends Component {
       //to come back as a number
     });
   }
-
+*/
   render() {
     const { active } = this.state;
     const { images } = this.props;
@@ -32,6 +38,8 @@ class Carousel extends Component {
               src={photo}
               data-index={index}
               onClick={this.handleIndexClick}
+              //old way below
+              //onClick={this.handleIndexClick.bind(this)}
               className={index === active ? "active" : ""}
               alt="animal thumbnail"
             />
