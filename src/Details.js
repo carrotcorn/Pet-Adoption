@@ -2,11 +2,23 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class Details extends Component {
+  /*normal React Class component notation
   constructor() {
     super();
 
-    this.state = { loading: true };
-  }
+     this.state = { loading: true };
+ } */
+  /* below, babel plugin in the '.babelrc'.  -    
+
+"plugins":[
+     "@babel/plugin-proposal-class-properties" 
+   ]
+
+  - allows for setting the state like this in class components instate of
+   writing "super(), erc."
+_________________________________________________ */
+  state = { loading: true };
+
   async componentDidMount() {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
