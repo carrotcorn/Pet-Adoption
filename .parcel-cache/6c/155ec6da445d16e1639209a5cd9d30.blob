@@ -1,0 +1,68 @@
+"use strict";
+var helpers = require("./node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _react = require("react");
+  var _reactRouterDom = require("react-router-dom");
+  var _jsxRuntime = require("react/jsx-runtime");
+  function _defineProperty(obj, key, value) {
+    if ((key in obj)) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+    return obj;
+  }
+  class ErrorBoundary extends _react.Component {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "state", {
+        hasError: false,
+        redirect: false
+      });
+    }
+    static getDerivedStateFromError() {
+      return {
+        hasError: true
+      };
+    }
+    componentDidCatch(error, info) {
+      console.error("ErrorBoundary caught an error", error, info);
+    }
+    componentDidUpdate() {
+      if (this.state.hasError) {
+        setTimeout;
+      }
+    }
+    render() {
+      if (this.state.hasError) {
+        return (
+          /*#__PURE__*/(0, _jsxRuntime.jsxs)("h2", {
+            children: ["This listing has an error. ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+              to: "/",
+              children: "Click Here"
+            }), " to go back to the home page"]
+          })
+        );
+      }
+      return this.props.children;
+    }
+  }
+  var _default = ErrorBoundary;
+  exports.default = _default;
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -1,0 +1,34 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+require("react-router-dom");
+var _reactJsxRuntime = require("react/jsx-runtime");
+const Pet = ({name, animal, breed, images, location, id}) => {
+  let hero = "http://pets-images.dev-apis.com/pets/none.jpg";
+  if (images.length) {
+    hero = images[0];
+  }
+  return (
+    /*#__PURE__*/_reactJsxRuntime.jsxs("a", {
+      href: `/details/${id}`,
+      className: "pet",
+      children: [/*#__PURE__*/_reactJsxRuntime.jsx("div", {
+        className: "image-container",
+        children: /*#__PURE__*/_reactJsxRuntime.jsx("img", {
+          src: hero,
+          alt: name
+        })
+      }), /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+        className: "info",
+        children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
+          children: name
+        }), /*#__PURE__*/_reactJsxRuntime.jsxs("h2", {
+          children: [" ", `${animal} - ${breed} - ${location}`, " "]
+        })]
+      })]
+    })
+  );
+};
+_c = Pet;
+exports.default = Pet;
+var _c;
+$RefreshReg$(_c, "Pet");

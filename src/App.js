@@ -1,15 +1,43 @@
-import React from "react";
+import React, { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
-import Pet from "./Pet";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import SearchParams from "./SearchParams";
+import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
-  return(
-  <div>
-    <h1>Adopt Me!</h1>
-    <Pet name="Ash" animal="Dog" breed="Australian Sheppard"/>
-    <Pet name="Tom" animal="Cat" breed="American Short-Hair"/>
-    <Pet name="SxreeDumps" animal="Cat" breed="Calico"/>
-  </div>)
+  const themeHook = useState("darkblue");
+
+  /*
+  everything within the ThemeContext tags will influence the jsx tags, Example is the theme state being set to all te routes within the return. ie, header, Details, etc
+  */
+
+  return (
+    <ThemeContext.Provider value={themeHook}>
+      <div>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
+  );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);

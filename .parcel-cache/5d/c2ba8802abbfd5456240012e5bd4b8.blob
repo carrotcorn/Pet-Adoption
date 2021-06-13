@@ -1,0 +1,41 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  require("react");
+  var _reactDom = require("react-dom");
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
+  require("./SearchParams");
+  var _reactJsxRuntime = require("react/jsx-runtime");
+  const App = () => {
+    return (
+      /*#__PURE__*/_reactJsxRuntime.jsxs("div", {
+        children: [/*#__PURE__*/_reactJsxRuntime.jsx("h1", {
+          children: "Adopt Me!"
+        }), /*#__PURE__*/_reactJsxRuntime.jsx(Pet, {
+          name: "Ash",
+          animal: "Dog",
+          breed: "Australian Sheppard"
+        }), /*#__PURE__*/_reactJsxRuntime.jsx(Pet, {
+          name: "Tom",
+          animal: "Cat",
+          breed: "American Short-Hair"
+        }), /*#__PURE__*/_reactJsxRuntime.jsx(Pet, {
+          name: "SxreeDumps",
+          animal: "Cat",
+          breed: "Calico"
+        })]
+      })
+    );
+  };
+  _c = App;
+  _reactDomDefault.default.render(/*#__PURE__*/_reactJsxRuntime.jsx(App, {}), document.getElementById("root"));
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

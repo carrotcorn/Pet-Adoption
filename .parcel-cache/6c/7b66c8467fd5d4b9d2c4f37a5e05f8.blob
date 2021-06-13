@@ -1,0 +1,102 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = _interopRequireWildcard(require("react"));
+  var _reactDom = _interopRequireDefault(require("react-dom"));
+  var _reactRouterDom = require("react-router-dom");
+  var _SearchParams = _interopRequireDefault(require("./SearchParams"));
+  var _Details = _interopRequireDefault(require("./Details"));
+  var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+  var _jsxRuntime = require("react/jsx-runtime");
+  var _s = $RefreshSig$();
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+  function _getRequireWildcardCache(nodeInterop) {
+    if (typeof WeakMap !== "function") return null;
+    var cacheBabelInterop = new WeakMap();
+    var cacheNodeInterop = new WeakMap();
+    return (_getRequireWildcardCache = function (nodeInterop) {
+      return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+    })(nodeInterop);
+  }
+  function _interopRequireWildcard(obj, nodeInterop) {
+    if (!nodeInterop && obj && obj.__esModule) {
+      return obj;
+    }
+    if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+      return {
+        default: obj
+      };
+    }
+    var cache = _getRequireWildcardCache(nodeInterop);
+    if (cache && cache.has(obj)) {
+      return cache.get(obj);
+    }
+    var newObj = {};
+    var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+    for (var key in obj) {
+      if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+        var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+        if (desc && (desc.get || desc.set)) {
+          Object.defineProperty(newObj, key, desc);
+        } else {
+          newObj[key] = obj[key];
+        }
+      }
+    }
+    newObj.default = obj;
+    if (cache) {
+      cache.set(obj, newObj);
+    }
+    return newObj;
+  }
+  const App = () => {
+    _s();
+    const themeHook = (0, _react.useState)("skyblue");
+    /*
+    everything within the ThemeContext tags will influence the jsx tags, Example is the theme state being set to all te routes within the return. ie, header, Details, etc
+    */
+    return (
+      /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
+        value: themeHook,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.BrowserRouter, {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+                to: "/",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+                  children: "Adopt Me!"
+                })
+              })
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+                path: "/details/:id",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Details.default, {})
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+                path: "/",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SearchParams.default, {})
+              })]
+            })]
+          })
+        })
+      })
+    );
+  };
+  _s(App, "b9IAxKNzjBvrwg1iEtbagOKGIx4=");
+  _c = App;
+  _reactDom.default.render(/*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(App, {})
+  }), document.getElementById("root"));
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
