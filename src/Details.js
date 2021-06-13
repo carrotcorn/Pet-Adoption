@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import Carousel from "./Carousel";
 
 import ErrorBoundary from "../ErrorBoundary";
+// import ThemeContext from "./ThemeContext";
 
 class Details extends Component {
   /*normal React Class component notation
@@ -50,7 +51,7 @@ _________________________________________________ */
     const { animal, breed, city, state, description, name, images } =
       this.state;
 
-   //  throw new Error("test ErrorBoundary");
+    //  throw new Error("test ErrorBoundary");
 
     return (
       <div className="details">
