@@ -77,19 +77,19 @@ _________________________________________________ */
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
-          {
-             showModal ? (
-                <Modal>
-                   <div>
-                      <h1>Would you like to adopt {name}?</h1>
-                      <div className="buttons">
-                         <button onClick={this.adopt}>Yes</button>
-                         <button onClick={this.toggleModal}>No, I dont want this animal in my life</button>
-                      </div>
-                   </div>
-                </Modal>
-             )
-          }
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>Would you like to adopt {name}?</h1>
+                <div className="buttons">
+                  <button onClick={this.adopt}>Yes</button>
+                  <button onClick={this.toggleModal}>
+                    No, I dont want this animal in my life
+                  </button>
+                </div>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
