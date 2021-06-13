@@ -8,6 +8,7 @@ const Modal = ({ children }) => {
   if (!elRef.current) {
     elRef.current = document.createElement("div");
   }
+
   useEffect(() => {
     modalRoot.appendChild(elRef.current);
     return () => modalRoot.removeChild(elRef.current);

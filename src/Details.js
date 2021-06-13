@@ -43,7 +43,7 @@ _________________________________________________ */
     // });
   }
 
-  toggleModal = () => this.setState({ showModal: !this.setState.showModal });
+  toggleModal = () => this.setState({ showModal: !this.state.showModal });
   adopt = () => (window.location = "http://bit.ly/pet-adopt");
 
   render() {
@@ -52,7 +52,7 @@ _________________________________________________ */
       return <h2>loading...</h2>;
     }
 
-    const { animal, breed, city, state, description, name, images } =
+    const { animal, breed, city, state, description, name, images, showModal } =
       this.state;
 
     //  throw new Error("test ErrorBoundary");
@@ -77,18 +77,31 @@ _________________________________________________ */
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+
           {showModal ? (
-            <Modal>
-              <div>
-                <h1>Would you like to adopt {name}?</h1>
-                <div className="buttons">
-                  <button onClick={this.adopt}>Yes</button>
-                  <button onClick={this.toggleModal}>
-                    No, I dont want this animal in my life
-                  </button>
-                </div>
-              </div>
-            </Modal>
+            <ThemeContext.Consumer>
+              {([themeHook]) => (
+                <Modal>
+                  <div>
+                    <h1>Would you like to adopt {name}?</h1>
+                    <div className="buttons">
+                      <button
+                        onClick={this.adopt}
+                        style={{ backgroundColor: themeHook }}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={this.toggleModal}
+                        style={{ backgroundColor: themeHook }}
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </Modal>
+              )}
+            </ThemeContext.Consumer>
           ) : null}
         </div>
       </div>
