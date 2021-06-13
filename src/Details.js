@@ -2,6 +2,7 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import Carousel from "./Carousel";
+import Modal from "./Modal";
 
 import ErrorBoundary from "../ErrorBoundary";
 import ThemeContext from "./ThemeContext";
@@ -22,7 +23,7 @@ class Details extends Component {
   - allows for setting the state like this in class components instate of
    writing "super(), erc."
 _________________________________________________ */
-  state = { loading: true };
+  state = { loading: true, showModal: false };
 
   async componentDidMount() {
     const res = await fetch(
@@ -41,6 +42,9 @@ _________________________________________________ */
     //       //object.assign() does this with just two lines of code
     // });
   }
+
+  toggleModal = () => this.setState({ showModal: !this.setState.showModal });
+  adopt = () => (window.location = "http://bit.ly/pet-adopt");
 
   render() {
     //   console.log(this.state);
@@ -64,12 +68,28 @@ _________________________________________________ */
           {/* below is how to use context in class components */}
           <ThemeContext.Consumer>
             {([themeHook]) => (
-              <button style={{ backgroundColor: themeHook }}>
+              <button
+                onClick={this.toggleModal}
+                style={{ backgroundColor: themeHook }}
+              >
                 Adopt {name}
               </button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+          {
+             showModal ? (
+                <Modal>
+                   <div>
+                      <h1>Would you like to adopt {name}?</h1>
+                      <div className="buttons">
+                         <button onClick={this.adopt}>Yes</button>
+                         <button onClick={this.toggleModal}>No, I dont want this animal in my life</button>
+                      </div>
+                   </div>
+                </Modal>
+             )
+          }
         </div>
       </div>
     );

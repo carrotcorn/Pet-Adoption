@@ -1,0 +1,104 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = DetailsWithErrorBoundary;
+  var _react = require("react");
+  var _reactRouterDom = require("react-router-dom");
+  var _Carousel = _interopRequireDefault(require("./Carousel"));
+  var _Modal = _interopRequireDefault(require("./Modal"));
+  var _ErrorBoundary = _interopRequireDefault(require("../ErrorBoundary"));
+  var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+  var _jsxRuntime = require("react/jsx-runtime");
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+  function _defineProperty(obj, key, value) {
+    if ((key in obj)) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+    return obj;
+  }
+  class Details extends _react.Component {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "state", {
+        loading: true,
+        showModal: false
+      });
+    }
+    async componentDidMount() {
+      const res = await fetch(`http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`);
+      const json = await res.json();
+      this.setState(Object.assign({
+        loading: false
+      }, json.pets[0]));
+    }
+    render() {
+      // console.log(this.state);
+      if (this.state.loading) {
+        return (
+          /*#__PURE__*/(0, _jsxRuntime.jsx)("h2", {
+            children: "loading..."
+          })
+        );
+      }
+      const {animal, breed, city, state, description, name, images} = this.state;
+      // throw new Error("test ErrorBoundary");
+      return (
+        /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "details",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Carousel.default, {
+            images: images
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+              children: name
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("h2", {
+              children: [animal, " - ", breed, " - ", city, ", ", state]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext.default.Consumer, {
+              children: ([themeHook]) => /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+                style: {
+                  backgroundColor: themeHook
+                },
+                children: ["Adopt ", name]
+              })
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+              children: description
+            })]
+          })]
+        })
+      );
+    }
+  }
+  const DetailsWithRouter = (0, _reactRouterDom.withRouter)(Details);
+  _c = DetailsWithRouter;
+  function DetailsWithErrorBoundary() {
+    return (
+      /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DetailsWithRouter, {})
+      })
+    );
+  }
+  _c2 = DetailsWithErrorBoundary;
+  var _c, _c2;
+  $RefreshReg$(_c, "DetailsWithRouter");
+  $RefreshReg$(_c2, "DetailsWithErrorBoundary");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

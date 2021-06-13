@@ -5,14 +5,13 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Adopt Me</title>
-   <link rel="stylesheet" href="./style.css">
+   <link rel="stylesheet" href="69189ad0d02679529c45411aa6b9e954">
 </head>
 
 <body>
-   <!-- allowing modal to render above root -->
-   <div id="modal"></div>
+   <div id=""></div>
    <div id="root">not rendered</div>
-   <script src="App.js">
+   <script src="21a240e91e4ef831825363877fa331a9" data-parcel-key="cb2664e1f0ff0770550988136f751301">
    </script>
 </body>
 </html>
