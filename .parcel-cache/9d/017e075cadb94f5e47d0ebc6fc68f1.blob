@@ -1,0 +1,23 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _react = require("react");
+  const AnimalContext = /*#__PURE__*/(0, _react.createContext)(_c = () => {});
+  _c2 = AnimalContext;
+  var _default = AnimalContext;
+  exports.default = _default;
+  var _c, _c2;
+  $RefreshReg$(_c, "AnimalContext$createContext");
+  $RefreshReg$(_c2, "AnimalContext");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

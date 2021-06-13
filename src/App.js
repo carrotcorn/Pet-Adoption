@@ -6,7 +6,8 @@ import Details from "./Details";
 import ThemeContext from "./ThemeContext";
 
 const App = () => {
-  const themeHook = useState("#6573e5");
+  const themeHook = useState("darkblue");
+
   /*
   everything within the ThemeContext tags will influence the jsx tags, Example is the theme state being set to all te routes within the return. ie, header, Details, etc
   */
