@@ -1,0 +1,42 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _react = require("react");
+  var _reactDom = require("react-dom");
+  var _jsxRuntime = require("react/jsx-runtime");
+  var _s = $RefreshSig$();
+  const modalRoot = document.getElementById("modal");
+  const Modal = ({children}) => {
+    _s();
+    const elRef = (0, _react.useRef)(null);
+    if (!elRef.current) {
+      elRef.current = document.createElement("div");
+    }
+    (0, _react.useEffect)(() => {
+      modalRoot.appendChild(elRef.current);
+      return () => modalRoot.removeChild(elRef.current);
+    }, []);
+    return (
+      /*#__PURE__*/(0, _reactDom.createPortal)(/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: children
+      }), elRef.current)
+    );
+  };
+  _s(Modal, "uS4DrwVCzH44ayWi2jMWCV+OL1E=");
+  _c = Modal;
+  var _default = Modal;
+  exports.default = _default;
+  var _c;
+  $RefreshReg$(_c, "Modal");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
