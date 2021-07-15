@@ -1,0 +1,60 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = require("react");
+  var _Results = _interopRequireDefault(require("./Results"));
+  var _reactPaginate = _interopRequireDefault(require("react-paginate"));
+  var _jsxRuntime = require("react/jsx-runtime");
+  var _s = $RefreshSig$();
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+  function Pagination({pets}) {
+    _s();
+    const [petData, setPetData] = (0, _react.useState)([]);
+    const [pageNumber, setPageNumber] = (0, _react.useState)(0);
+    const [pageCount] = (0, _react.useState)();
+    const [animal] = (0, _react.useState)("");
+    (0, _react.useEffect)(() => {
+      requestPetsPagination();
+    }, []);
+    // eslint-disable-line react-hooks/exhaustive-deps
+    async function requestPetsPagination() {
+      const res = await fetch(`http://pets-v2.dev-apis.com/pets?animal=${animal}&page=${pageNumber}`);
+      const json = await res.json();
+      console.log(json);
+      setPetData(json.pets);
+    }
+    return (
+      /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Results.default, {
+          pets: petData
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactPaginate.default, {
+          previousLabel: 'previous',
+          nextLabel: 'next',
+          breakLabel: '...',
+          breakClassName: 'break-me',
+          pageCount: 10,
+          marginPagesDisplayed: 2,
+          pageRangeDisplayed: 5,
+          onPageChange: this.handlePageClick,
+          containerClassName: 'pagination',
+          activeClassName: 'active'
+        })]
+      })
+    );
+  }
+  _s(Pagination, "a05lx2go/QbnBgNTMiINNAVwgzg=");
+  _c = Pagination;
+  var _c;
+  $RefreshReg$(_c, "Pagination");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

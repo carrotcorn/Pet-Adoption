@@ -1,0 +1,41 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _Pet = _interopRequireDefault(require("./Pet"));
+var _jsxRuntime = require("react/jsx-runtime");
+var _s = $RefreshSig$();
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+function Results({pets, pageProp}) {
+  _s();
+  const [petData, setPetData] = useState([]);
+  // const [pageNumber, setPageNumber] = useState(0);
+  // const [pageCount] = useState()
+  const [animal] = useState("");
+  return (
+    /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "search",
+      children: !pets.length ? /*#__PURE__*/(0, _jsxRuntime.jsx)("h2", {
+        children: "No Pets Found"
+      }) : pets.map(pet => /*#__PURE__*/(0, _jsxRuntime.jsx)(_Pet.default, {
+        animal: pet.animal,
+        name: pet.name,
+        breed: pet.breed,
+        images: pet.images,
+        location: `${pet.city}, ${pet.state}`,
+        id: pet.id
+      }, pet.id))
+    })
+  );
+}
+_s(Results, "DouiT9Zt6txA8mXKA6I9UAISsDA=");
+_c = Results;
+var _default = Results;
+exports.default = _default;
+var _c;
+$RefreshReg$(_c, "Results");

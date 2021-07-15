@@ -1,0 +1,80 @@
+"use strict";
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+  var _react = require("react");
+  var _jsxRuntime = require("react/jsx-runtime");
+  var _s = $RefreshSig$();
+  function Pagination({data, RenderComponent, title, pageLimit, dataLimit}) {
+    _s();
+    const [pages] = (0, _react.useState)(Math.round(data.length / dataLimit));
+    const [currentPage, setCurrentPage] = (0, _react.useState)(1);
+    function goToNextPage() {
+      setCurrentPage(page => page + 1);
+    }
+    ;
+    function goToPreviousPage() {
+      setCurrentPage(page => page - 1);
+    }
+    ;
+    function changePage(e) {
+      const pageNumber = Number(e.target.textContent);
+      setCurrentPage(pageNumber);
+    }
+    ;
+    const getPaginatedData = () => {
+      const startIndex = currentPage * dataLimit - dataLimit;
+      const endIndex = startIndex + dataLimit;
+      return data.slice(startIndex, endIndex);
+    };
+    const getPaginationGroup = () => {
+      let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
+      return new Array(pageLimit).fill().map((_, index) => start + index + 1);
+    };
+    return (
+      /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+          children: title
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "dataComponent",
+          children: getPaginatedData().map((d, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(RenderComponent, {
+            data: d
+          }, index))
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "pagination",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+            onClick: goToPreviousPage(),
+            className: `prev ${currentPage === 1 ? 'disabled' : ''}`,
+            children: "prev"
+          }), getPaginationGroup().map((item, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+            onClick: changePage,
+            className: `paginationItem ${currentPage === item ? 'active' : null}`,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              children: item
+            })
+          }, index)), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+            onClick: goToNextPage(),
+            className: `prev ${currentPage === pages ? 'disabled' : ''}`,
+            children: "next"
+          })]
+        })]
+      })
+    );
+  }
+  _s(Pagination, "TAuAHIRT/chsJ5y/NrRj9/numrE=");
+  _c = Pagination;
+  var _default = Pagination;
+  exports.default = _default;
+  var _c;
+  $RefreshReg$(_c, "Pagination");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

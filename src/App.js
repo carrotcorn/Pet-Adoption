@@ -2,6 +2,7 @@ import React, { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SearchParams from "./SearchParams";
+// import Pagination from "./Pagination";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
 
@@ -30,6 +31,10 @@ const App = () => {
             </Route>
           </Switch>
         </Router>
+        {/* <Pagination 
+          data={props.data}
+
+        /> */}
       </div>
     </ThemeContext.Provider>
   );
