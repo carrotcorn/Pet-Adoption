@@ -26,7 +26,7 @@ const getPaginationGroup = () => {
   let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
   return new Array(pageLimit).fill().map((_, index) => start + index + 1);
 }
-
+  
 
 
 return(
